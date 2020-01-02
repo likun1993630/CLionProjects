@@ -22,7 +22,7 @@ int main()
     cv::Mat imageblur;
     image = cv::imread("/home/likun/CLionProjects/solvePnP/9.jpg");
 
-    cv::Size size(11,11);
+    cv::Size size(9,9);
     //cv::GaussianBlur(image, imageblur, size, 1 ,1);
 
     cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
