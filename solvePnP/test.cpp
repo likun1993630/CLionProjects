@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     image_points.push_back( cv::Point2d(614.8583972119726, 371.6058481510529) );     // Left top corner
     image_points.push_back( cv::Point2d(660.5546434178511, 371.6008453171359) );    // Right top corner
     image_points.push_back( cv::Point2d(660.5465187533821, 325.8706567525559) );    // Left bottom corner
-    image_points.push_back( cv::Point2d(614.8665218764417, 325.856539186389) );    // Right bottom corner
+    image_points.push_back( cv::Point2d(610.8665218764417, 320.856539186389) );    // Right bottom corner
 
     // 3D model points.
     double markerLength = 0.25;
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     cv::Mat translation_vector;
 
     cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,0,0);
-    cv::Mat intputtvec = (cv::Mat_<double>(1,3) << 0,0,5);
+    cv::Mat intputtvec = (cv::Mat_<double>(1,3) << 0,0,20);
 
     std::vector<cv::Point2d> image_output;
     cv::projectPoints(model_points,intputrvec, intputtvec, cameraMatrix, distCoeffs, image_output);
@@ -60,6 +60,9 @@ int main(int argc, char **argv)
     std::cout << translation_vector << std::endl;
     std::cout << rotation_vector << std::endl;
     std::cout << image_output << std::endl;
+
+    double x = image_output[1].x - image_output[0].x;
+    std::cout << x << std::endl;
 
 //    std::cout << m << std::endl;
 //    std::cout << m1 << std::endl;

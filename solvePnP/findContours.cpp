@@ -34,7 +34,7 @@ int main()
     cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
 
     double adaptiveThreshConstant = 7;
-    int adaptiveThreshWinSize = 23;
+    int adaptiveThreshWinSize = 43;
     cv::Mat oneimage;
     _threshold(gray, oneimage, adaptiveThreshWinSize, adaptiveThreshConstant);
 

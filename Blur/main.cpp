@@ -4,7 +4,7 @@ using namespace cv;
 
 int main() {
 
-    std::string imageName = "/home/likun/CLionProjects/Blur/29.png";
+    std::string imageName = "/home/likun/CLionProjects/Blur/161.jpg";
     Mat image;
     Mat imageblur;
 
@@ -17,9 +17,15 @@ int main() {
     }
 
     cv::Size size(5,5);
-    cv::GaussianBlur(image, imageblur, size, 1 ,1);
+    // cv::GaussianBlur(image, imageblur, size, 0 ,0);
+    // cv::medianBlur(image, imageblur, 5);
+    cv::bilateralFilter(image, imageblur, 5, 10, 5);
 
-    imwrite("/home/likun/CLionProjects/Blur/29blur.png", imageblur);
+    std::string imagename = "/home/likun/CLionProjects/Blur/161.png";
+    imwrite(imagename, imageblur);
+
+    std::string com = "nomacs " + imagename;
+    std::system(com.c_str());
 
 //    namedWindow( imageName, CV_WINDOW_AUTOSIZE );
 //    namedWindow( "blur image", CV_WINDOW_AUTOSIZE );

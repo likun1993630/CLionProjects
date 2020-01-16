@@ -21,8 +21,8 @@ int main(int argc, char **argv)
     cv::Mat distCoeffs = (cv::Mat_<double>(1, 5) << 0.0, 0.0, 0.0, 0.0, 0.0);
 
     // @Input rotation and translation
-    //cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,-0.785,0);
-    cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,0,0);
+    cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,-0.785,0);
+    //cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,0,0);
     cv::Mat intputtvec = (cv::Mat_<double>(1,3) << 0,0,3);
 
     // @Output four corners of marker in image
@@ -45,8 +45,11 @@ int main(int argc, char **argv)
 
     cv::namedWindow("Display", CV_WINDOW_NORMAL);
     cv::imshow("Display", imagep);
+    cv::imwrite("../images/projectpoint.png", imagep);
 
     std::cout << image_output << std::endl;
+
+    std::system("nomacs /home/likun/CLionProjects/solvePnP/images/projectpoint.png");
 
     waitKey(0);
     return 0;
