@@ -10,10 +10,15 @@ int main(int argc, char **argv)
     float markerLength = 0.25;
     // clockwise
     std::vector<cv::Point3d> model_points;
-    model_points.push_back(cv::Point3d(-markerLength / 2.f, markerLength / 2.f, 0));
-    model_points.push_back(cv::Point3d(markerLength / 2.f, markerLength / 2.f, 0));
-    model_points.push_back(cv::Point3d(markerLength / 2.f, -markerLength / 2.f, 0));
-    model_points.push_back(cv::Point3d(-markerLength / 2.f, -markerLength / 2.f, 0));
+//    model_points.push_back(cv::Point3d(-markerLength / 2.f, markerLength / 2.f, 0));
+//    model_points.push_back(cv::Point3d(markerLength / 2.f, markerLength / 2.f, 0));
+//    model_points.push_back(cv::Point3d(markerLength / 2.f, -markerLength / 2.f, 0));
+//    model_points.push_back(cv::Point3d(-markerLength / 2.f, -markerLength / 2.f, 0));
+
+    model_points.push_back(cv::Point3d(-0.5, markerLength / 2.f, 0));
+    model_points.push_back(cv::Point3d(0.5, markerLength / 2.f, 0));
+    model_points.push_back(cv::Point3d(0.5, -markerLength / 2.f, 0));
+    model_points.push_back(cv::Point3d(-0.5, -markerLength / 2.f, 0));
 
     // @Input Camera internals
     cv::Mat cameraMatrix = (cv::Mat_<double>(3, 3) << 913.653581, 0.000000, 637.711518, 0.000000, 914.594866, 348.727618, 0.000000, 0.000000, 1.000000);
@@ -21,7 +26,7 @@ int main(int argc, char **argv)
     cv::Mat distCoeffs = (cv::Mat_<double>(1, 5) << 0.0, 0.0, 0.0, 0.0, 0.0);
 
     // @Input rotation and translation
-    cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,-0.785,0);
+    cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,0,0);
     //cv::Mat intputrvec = (cv::Mat_<double>(1,3) << 0,0,0);
     cv::Mat intputtvec = (cv::Mat_<double>(1,3) << 0,0,3);
 

@@ -16,5 +16,8 @@ find_package(OpenCV REQUIRED)
 #add_executable(findContours findContours.cpp )
 #target_link_libraries(findContours ${OpenCV_LIBS})
 
-add_executable(thresholding thresholding.cpp )
-target_link_libraries(thresholding ${OpenCV_LIBS})
+#add_executable(thresholding thresholding.cpp )
+#target_link_libraries(thresholding ${OpenCV_LIBS})
+
+add_executable(solvePnP towconturs.cpp )
+target_link_libraries(solvePnP ${OpenCV_LIBS})

@@ -12,18 +12,27 @@ int main(int argc, char **argv)
 //    image_points.push_back( cv::Point2d(960+60, 540+0) );    // Right top corner
 //    image_points.push_back( cv::Point2d(960+0, 540+57) );    // Left bottom corner
 //    image_points.push_back( cv::Point2d(960+60, 540+57) );    // Right bottom corner
-    image_points.push_back( cv::Point2d(614.8583972119726, 371.6058481510529) );     // Left top corner
-    image_points.push_back( cv::Point2d(660.5546434178511, 371.6008453171359) );    // Right top corner
-    image_points.push_back( cv::Point2d(660.5465187533821, 325.8706567525559) );    // Left bottom corner
-    image_points.push_back( cv::Point2d(610.8665218764417, 320.856539186389) );    // Right bottom corner
+//    image_points.push_back( cv::Point2d(614.8583972119726, 371.6058481510529) );     // Left top corner
+//    image_points.push_back( cv::Point2d(660.5546434178511, 371.6008453171359) );    // Right top corner
+//    image_points.push_back( cv::Point2d(660.5465187533821, 325.8706567525559) );    // Left bottom corner
+//    image_points.push_back( cv::Point2d(610.8665218764417, 320.856539186389) );    // Right bottom corner
+    image_points.push_back( cv::Point2d(485.4359211666666, 386.8357374166667) );     // Left top corner
+    image_points.push_back( cv::Point2d(789.9871148333333, 386.8357374166667) );    // Right top corner
+    image_points.push_back( cv::Point2d(789.9871148333333, 310.6194985833333) );    // Left bottom corner
+    image_points.push_back( cv::Point2d(485.4359211666666, 310.6194985833333) );    // Right bottom corner
 
     // 3D model points.
     double markerLength = 0.25;
     std::vector<cv::Point3d> model_points;
-    model_points.push_back(cv::Point3d(-markerLength / 2.f, markerLength / 2.f, 0));       // Left eye left corner
-    model_points.push_back(cv::Point3d(markerLength / 2.f, markerLength / 2.f, 0));        // Right eye right corner
-    model_points.push_back(cv::Point3d(markerLength / 2.f, -markerLength / 2.f, 0));      // Left Mouth corner
-    model_points.push_back(cv::Point3d(-markerLength / 2.f, -markerLength / 2.f, 0));       // Right mouth corner
+//    model_points.push_back(cv::Point3d(-markerLength / 2.f, markerLength / 2.f, 0));       // Left eye left corner
+//    model_points.push_back(cv::Point3d(markerLength / 2.f, markerLength / 2.f, 0));        // Right eye right corner
+//    model_points.push_back(cv::Point3d(markerLength / 2.f, -markerLength / 2.f, 0));      // Left Mouth corner
+//    model_points.push_back(cv::Point3d(-markerLength / 2.f, -markerLength / 2.f, 0));       // Right mouth corner
+
+    model_points.push_back(cv::Point3d(-0.5, markerLength / 2.f, 0));       // Left eye left corner
+    model_points.push_back(cv::Point3d(0.5, markerLength / 2.f, 0));        // Right eye right corner
+    model_points.push_back(cv::Point3d(0.5, -markerLength / 2.f, 0));      // Left Mouth corner
+    model_points.push_back(cv::Point3d(-0.5, -markerLength / 2.f, 0));       // Right mouth corner
 
     // Camera internals
     cv::Mat cameraMatrix = (cv::Mat_<double>(3, 3) << 913.653581, 0.000000, 637.711518, 0.000000, 914.594866, 348.727618, 0.000000, 0.000000, 1.000000);
@@ -67,4 +76,7 @@ int main(int argc, char **argv)
 //    std::cout << m << std::endl;
 //    std::cout << m1 << std::endl;
 //    std::cout << m2.channels() << std::endl;
+
+    cv::Mat a,b,c;
+    cv::solve(a,b,c,);
 }

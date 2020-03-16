@@ -89,8 +89,5 @@ int main() {
 
 
     cv::aruco::estimatePoseSingleMarkers(corners, 0.25, cameraMatrix, distCoeffs, rvecs, tvecs);
-
-
-
     return 0;
 }
