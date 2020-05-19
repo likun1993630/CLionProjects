@@ -6,36 +6,54 @@
 #include <string>
 
 //void Markerset();
-//void makesigleMarker(int id);
-void Markerboard(int idbegin, int idend);
+void makesigleMarker(int id);
+//void Markerboard(int idbegin, int idend);
 
 int main(int argc, char** argv){
 
-//    for (int i = 100; i <= 120; ++i)
-//        makesigleMarker(i);
+    for (int i = 0; i <= 249; ++i)
+        makesigleMarker(i);
 
 //    Markerset();
-    for (int i = 200; i < 220; i=i+2) {
-        Markerboard(i,i+1);
-    }
-    for (int i = 200; i < 250; i=i+6) {
-        Markerboard(i,i+5);
-    }
+//    for (int i = 200; i < 220; i=i+2) {
+//        Markerboard(i,i+1);
+//    }
+//    for (int i = 200; i < 250; i=i+6) {
+//        Markerboard(i,i+5);
+//    }
 
     return 0;
 }
 
-//void makesigleMarker(int id){
-//    int markerid = id;
-//    std::string markername = "Marker"+std::to_string(markerid)+".jpg";
-//    //生成 Aruco Marker
-//    cv::Mat markerImage;
-//    cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_250);
-//    cv::aruco::drawMarker(dictionary, markerid, 800, markerImage, 1);
-//    cv::imshow("Marker",markerImage); // 打印图像
-//    //cv::waitKey ( 0 ); // 程序暂停，等待输出图像
-//    cv::imwrite( markername, markerImage); //输出图像到文件
-//}
+void makesigleMarker(int id){
+    int markerid = id;
+    std::string markername = "Marker"+std::to_string(markerid)+".jpg";
+    //生成 Aruco Marker
+    cv::Mat markerImage;
+    int markerpixels = 800;
+    int imagepixels = 970;
+    cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_250);
+    cv::aruco::drawMarker(dictionary, markerid, markerpixels, markerImage, 1);
+
+    // 生成全白背景
+    //    cv::Mat background = cv::Mat::zeros(imagepixels, imagepixels, CV_8UC3);
+    //    background.setTo(cv::Scalar(255, 255, 255));
+    cv::Mat background = cv::Mat::zeros(imagepixels, imagepixels, CV_8UC1);
+    background.setTo(cv::Scalar(255));
+
+    int a = markerImage.channels();
+
+    // 将marker嵌入image
+    int x0 = (imagepixels-markerpixels)/2-1;
+    int y0 = x0;
+    cv::Rect roi_rect = cv::Rect(x0, y0, markerImage.cols, markerImage.rows);
+    markerImage.copyTo(background(roi_rect));
+
+    background.copyTo(markerImage);
+    cv::imshow("Marker",markerImage); // 打印图像
+    //cv::waitKey ( 0 ); // 程序暂停，等待输出图像
+    cv::imwrite( markername, markerImage); //输出图像到文件
+}
 //
 //void Markerset(){
 //    //设置深蓝色背景画布
